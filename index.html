@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf8">
+        <title>About IdkGoodName</title>
+        <!-- Too lazy to have files -->
+        <style>
+            html {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                margin: 0;
+                padding: 60px 140px;
+                color: #cecece;
+                background-color: black;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .main {
+                padding: 20px 40px;
+                background-color: #0a0a0a;
+                border-radius: 10px;
+                border: solid 1px rgba(255, 255, 255, 0.05);
+                text-align: justify;
+            }
+            * {
+                scrollbar-color: #2a2a2a transparent;
+            }
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+            ::-webkit-scrollbar-thumb {
+                background-color: #2a2a2a;
+                border-radius: 10px;
+            }
+            ::selection {
+                background-color: #df4646cc;
+                color: white;
+            }
+            .header--tagline {
+                opacity: 50%;
+            }
+            .header--tagline-caret {
+                display: inline-block;
+                width: 2px;
+                height: 1em;
+                animation: blink 1s linear infinite;
+                background-color: #cecece;
+            }
+            @keyframes blink {
+                0% {
+                    opacity: 0%;
+                }
+                50% {
+                    opacity: 100%;
+                }
+                100% {
+                    opacity: 0%;
+                }
+            }
+            .header--image {
+                height: 80px;
+                width: 80px;
+                border-radius: 100%;
+            }
+            h1, h2, h3 {
+                color: #ececec;
+            }
+            a[href], a[href]:focus, a[href]:visited, a[href]:active {
+                color: #df4646;
+                transition: 0.3s color;
+                text-decoration: none;
+            }
+            a[href]:hover {
+                color: #e76464;
+            }
+            q {
+                padding: 2px 4px;
+                border-radius: 4px;
+                background-color: #151515;
+            }
+            q::before, q::after {
+                opacity: 50%;
+            }
+            q::before {
+                padding-right: 3px;
+            }
+            q::after {
+                padding-left: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="main">
+            <header class="header--main">
+                <img class="header--image" src="https://avatars.githubusercontent.com/u/31628630?s=96&v=4" alt="IdkGoodName's profile picture" />
+                <p class="header--tagline" id="tagline-type-out"><span class="header--tagline-text">I am businessman. I do business.</span></p>
+            </header>
+            <article class="info--main">
+                <section class="about--main">
+                    <h1 class="about--title">Hey there! I'm IdkGoodName</h1>
+                    <div class="about--description">
+                        <p>Most people know me by my nickname <q>IdkGoodName</q>. Yeah, that's the name. I am some random person on the internet that likes tea. I also have 3 hobbies: programming, music and gaming.</p>
+                        <p>My main programming language as of now is C#, but I also use JavaScript pretty often. My most significant projects are <a href="https://github.com/Guilded-NET">Guilded.NET</a>, <a href="https://github.com/ReGuilded">ReGuilded</a> and <a href="https://yoki.gg/">Yoki Guilded bot</a>. There, of course, will be more projects coming soon.</p>
+                        <p>The music I produce is most often EDM (Electronic Dance Music). It can vary from genre to genre, but probably the most I want to create is Dubstep and <q>Electro House</q> music. I am not really that good at music yet, but we'll see how it will hold out in the future.</p>
+                        <p>And as mentioned, gaming. I don't do it as often as most people, but I like to do it from time to time. Most played games for me are probably Town of Salem (old, but gold) and Minecraft. Though, not rare for me to play Don't Starve Together or Terraria.</p>
+                    </div>
+                </section>
+                <section class="infoSection--main">
+                    <h3 class="infoSection--title">Socials</h3>
+                    <ul class="infoSection--links">
+                        <li><a href="https://guilded.gg/profile/R40Mp0Wd">Guilded</a></li>
+                        <li><a href="https://reddit.com/u/IdkGoodNameV">Reddit</a></li>
+                        <li><a href="https://twitter.com/IdkGoodNameV1">Twitter</a></li>
+                    </ul>
+                </section>
+            </article>
+        </main>
+        <script>
+            // Add caret. Don't want that when <script> doesn't run
+            const tagline = document.getElementById("tagline-type-out");
+            const caret = Object.assign(document.createElement("span"), {
+                classList: "header--tagline-caret"
+            });
+            tagline.appendChild(caret);
+
+            // Typed out text
+            const taglineText = tagline.querySelector("span.header--tagline-text");
+            const textToTypeOut = taglineText.innerHTML;
+            taglineText.innerHTML = "";
+
+            // Type it out
+            setTimeout(() => {
+                let textLeft = textToTypeOut;
+
+                const typeOutInterval = setInterval(() => {
+                    const char = textLeft[0];
+                    textLeft = textLeft.substring(1);
+                    taglineText.innerHTML += char;
+
+                    // undefined spam otherwise
+                    if (!textLeft.length)
+                        clearInterval(typeOutInterval);
+                }, 100);
+            }, 1000);
+        </script>
+    </body>
+</html>
